@@ -176,6 +176,7 @@ class BoletoTestCase(unittest.TestCase):
         boleto.save()
 
         generated = filename + '.xml'
+
         pdftoxml(filename, generated)
         expected = self._get_expected('Triplo-' + bank, generated)
         diff = diff_pdf_htmls(expected, generated)
@@ -185,6 +186,7 @@ class BoletoTestCase(unittest.TestCase):
         os.unlink(generated)
 
     def test_pdf_rendering(self):
+
         dados = self.dados[0]
         bank = type(dados).__name__
         filename = tempfile.mktemp(prefix="pyboleto-",
@@ -195,6 +197,7 @@ class BoletoTestCase(unittest.TestCase):
         boleto.save()
 
         generated = filename + '.xml'
+
         pdftoxml(filename, generated)
         expected = self._get_expected(bank, generated)
         diff = diff_pdf_htmls(expected, generated)
